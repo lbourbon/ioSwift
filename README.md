@@ -28,15 +28,28 @@ escolher os dispositivos
 no Xcode botão direito em Asses.Xcassets
 apagar a pasta AppIcon.appiconset e colocar sua baixada de appicon.co
 
-## Constrains
+## UI Elements
+
+### Programaticamente
+<code>
+let square = UIView(frame: CGRect(x:self.view.frame.width/2 - self.width/2, y:self.view.frame.height/2 - self.height/2, width:100, height:100)) 
+self.view.addSubview(square)
+</code>
+cria um objeto square a ser localizado no centro da tela, independente do tamanho
+
+
+### Constrains
 
 
 
 ## Cocoapods
-instalar: terminal > sudo gem install cocoapods
-                  > pod setup --verbose
-adic cocoapods no projeto: fecha xcode,
-na pasta do proj. no terminal > pod init (cria o podfile)
+Instalar: (terminal) 
+> sudo gem install cocoapods
+> pod setup --verbose
+
+Add cocoapods no projeto: fecha xcode, na pasta do proj. 
+no terminal:
+> pod init (cria o podfile)
 > open -a Xcode Podfile (abre o podfile no xcode)
 - uncomment next line
 - adiciona pods no bloco do-end: pod 'NomeDoPod'
