@@ -3,7 +3,7 @@
 ## Novo Projeto
 Organization Identifier: com.[nome da empresa]
 
-## MVC
+### MVC
 Model View Controller é um padrão de arquitetura de software
 
 Model é a estrutura que controla os dados, mas não é o próprio dados. Manipula e lê dados.
@@ -15,7 +15,7 @@ View: Main.storyboard; Images.xcasset
 Controller: AppDelegate.swift; ViewController.swift
 
 
-## Criar App Icon
+### Criar App Icon
 
 www.canva.com para desenhar seu ícone
 clica em custom dimension (1024x1024)
@@ -39,7 +39,16 @@ cria um objeto square a ser localizado no centro da tela, independente do tamanh
 
 
 ### Constrains
-
+Duas formas de criar restrições: pinning(fixação) ou alignment(alinhamento)
+#### Pinning
+Fixamos as bordas do objeto em relação as bordas da tela (ou outros objetos próximos), o tamanho é determinado dinamicamente, pela fórmula:
+width: tela.width - (x + x) , onde x é a distância da borda do objeto até as bordas da tela
+height: tela.height - (y + y) , onde y é a distância da borda do objeto até as bordas da tela
+#### Alignment
+Fixamos o tamanho do objeto (width e height) e decidimos o alinhamento (ex: centro da tela ou centro de alguma subview),
+a distância para as bordas serão determinadas dinamicamente, pela fórmula (no caso do objeto no centro da tela):
+x: tela.width/2 - width/2
+y: tela.height/2 - height/2
 
 
 ## Cocoapods
