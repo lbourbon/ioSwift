@@ -31,10 +31,10 @@ apagar a pasta AppIcon.appiconset e colocar sua baixada de appicon.co
 ## UI Elements
 
 ### Programaticamente
-<code>
-let square = UIView(frame: CGRect(x:self.view.frame.width/2 - self.width/2, y:self.view.frame.height/2 - self.height/2, width:100, height:100))<br>
-self.view.addSubview(square)
-</code>
+
+>let square = UIView(frame: CGRect(x:self.view.frame.width/2 - self.width/2, y:self.view.frame.height/2 - self.height/2, width:100, height:100))
+>self.view.addSubview(square)
+
 cria um objeto square a ser localizado no centro da tela, independente do tamanho
 
 
