@@ -32,7 +32,7 @@ apagar a pasta AppIcon.appiconset e colocar sua baixada de appicon.co
 
 ### Programaticamente
 <code>
-let square = UIView(frame: CGRect(x:self.view.frame.width/2 - self.width/2, y:self.view.frame.height/2 - self.height/2, width:100, height:100)) 
+let square = UIView(frame: CGRect(x:self.view.frame.width/2 - self.width/2, y:self.view.frame.height/2 - self.height/2, width:100, height:100))<br>
 self.view.addSubview(square)
 </code>
 cria um objeto square a ser localizado no centro da tela, independente do tamanho
@@ -42,13 +42,17 @@ cria um objeto square a ser localizado no centro da tela, independente do tamanh
 Duas formas de criar restrições: pinning(fixação) ou alignment(alinhamento)
 #### Pinning
 Fixamos as bordas do objeto em relação as bordas da tela (ou outros objetos próximos), o tamanho é determinado dinamicamente, pela fórmula:
-width: tela.width - (x + x) , onde x é a distância da borda do objeto até as bordas da tela
-height: tela.height - (y + y) , onde y é a distância da borda do objeto até as bordas da tela
+<br>
+width: tela.width - (x + x) , onde x é a distância da borda do objeto até as bordas da tela<br>
+height: tela.height - (y + y) , onde y é a distância da borda do objeto até as bordas da tela<br>
+
+
 #### Alignment
 Fixamos o tamanho do objeto (width e height) e decidimos o alinhamento (ex: centro da tela ou centro de alguma subview),
 a distância para as bordas serão determinadas dinamicamente, pela fórmula (no caso do objeto no centro da tela):
-x: tela.width/2 - width/2
-y: tela.height/2 - height/2
+<br>
+x: tela.width/2 - width/2<br>
+y: tela.height/2 - height/2<br>
 
 
 ## Cocoapods
