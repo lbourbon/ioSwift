@@ -3,6 +3,7 @@
 ## Novo Projeto
 Organization Identifier: com.[nome da empresa]
 
+
 ### MVC
 Model View Controller é um padrão de arquitetura de software
 
@@ -16,7 +17,6 @@ Controller: AppDelegate.swift; ViewController.swift
 
 
 ### Criar App Icon
-
 www.canva.com para desenhar seu ícone
 clica em custom dimension (1024x1024)
 download como PNG
@@ -28,24 +28,23 @@ escolher os dispositivos
 no Xcode botão direito em Asses.Xcassets
 apagar a pasta AppIcon.appiconset e colocar sua baixada de appicon.co
 
+
 ## UI Elements
 
-### Programaticamente
+### Constrains
+Duas formas de criar restrições: pinning(fixação) ou alignment(alinhamento)
 
+#### Programaticamente
 <code>let square = UIView(frame: CGRect(x:self.view.frame.width/2 - self.width/2, y:self.view.frame.height/2 - self.height/2, width:100, height:100))
 self.view.addSubview(square)</code>
 
 cria um objeto square a ser localizado no centro da tela, independente do tamanho
 
-
-### Constrains
-Duas formas de criar restrições: pinning(fixação) ou alignment(alinhamento)
 #### Pinning
 Fixamos as bordas do objeto em relação as bordas da tela (ou outros objetos próximos), o tamanho é determinado dinamicamente, pela fórmula:
 <br>
 width: tela.width - (x + x) , onde x é a distância da borda do objeto até as bordas da tela<br>
 height: tela.height - (y + y) , onde y é a distância da borda do objeto até as bordas da tela<br>
-
 
 #### Alignment
 Fixamos o tamanho do objeto (width e height) e decidimos o alinhamento (ex: centro da tela ou centro de alguma subview),
