@@ -3,6 +3,18 @@
 ## Novo Projeto
 Organization Identifier: com.[nome da empresa]
 
+## MVC
+Model View Controller é um padrão de arquitetura de software
+
+Model é a estrutura que controla os dados, mas não é o próprio dados. Manipula e lê dados.
+Controller é a comunicação entre o Model e o View. Troca dados com o Model e envia dados para o View
+View é a camada de interação com o usuário. É utilizada para receber a entrada de dados e apresentar visualmente o resultado.
+No projeto do XCode, criar 3 pastas com cada nome e colocar dentro das pastas:
+Model: SeuModel.swift; SeuBancoDeDados.swift
+View: Main.storyboard; Images.xcasset
+Controller: AppDelegate.swift; ViewController.swift
+
+
 ## Criar App Icon
 
 www.canva.com para desenhar seu ícone
