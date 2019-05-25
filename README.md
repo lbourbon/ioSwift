@@ -62,10 +62,10 @@ a distância para as bordas serão determinadas dinamicamente, pela fórmula (no
 
 #### Programaticamente
 Criar um objeto square a ser localizado no centro da tela, independente do tamanho:
-'''swift
+```
 let square = UIView(frame: CGRect(x:self.view.frame.width/2 - self.width/2, y:self.view.frame.height/2 - self.height/2, width:100, height:100))
 self.view.addSubview(square)
-'''
+```
 
 
 
