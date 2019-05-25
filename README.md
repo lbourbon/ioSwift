@@ -36,35 +36,37 @@ Duas formas de criar restrições: pinning(fixação) ou alignment(alinhamento)
 
 #### Pinning
 Fixamos as bordas do objeto em relação as bordas da tela (ou outros objetos próximos), o tamanho é determinado dinamicamente, pela fórmula:
-<br>
-width: tela.width - (x + x) , onde x é a distância da borda do objeto até as bordas da tela<br>
-height: tela.height - (y + y) , onde y é a distância da borda do objeto até as bordas da tela<br>
+* width: tela.width - (x + x) , onde x é a distância da borda do objeto até as bordas da tela
+* height: tela.height - (y + y) , onde y é a distância da borda do objeto até as bordas da tela
 
 #### Alignment
 Fixamos o tamanho do objeto (width e height) e decidimos o alinhamento (ex: centro da tela ou centro de alguma subview),
 a distância para as bordas serão determinadas dinamicamente, pela fórmula (no caso do objeto no centro da tela):
-<br>
-x: tela.width/2 - width/2<br>
-y: tela.height/2 - height/2<br>
+* x: tela.width/2 - width/2
+* y: tela.height/2 - height/2
 
 -> PINNING NA PRÁTICA: o tamanho do objeto vai variar a depender do tamanho da tela do telefone.
 - Clicar no botão Add New Constrains
 - Remover fixar da margem: faz com que fixe a partir da borda da tela e não deixa margem
 - Escolher distâncias 
 - Add Constrains
+
 -> ALIGNMENT NA PRÁTICA: mesmo tamanho para todas as telas, mas a distância para os outros objetos varia.
 - Clicar no botão Constrains
 - Clicar em width e height (para fixar tamanho)
 - Clica no botão Align
 - Escolhe alinhamento
--> DICA: ADICIONAR OBJETOS DENTRO DE CONTAINERS (UIViews) PARA FACILITAR ALINHAMENTO.
-Ex: 3 containers, os de baixo e de cima fixados nas margens e no do meio. O do meio alinhado no centro
--> REMOVER CONTRAINS: Clica em Resolve Auto Layout Issues; Clear Constrains
-#### Programaticamente
-<code>let square = UIView(frame: CGRect(x:self.view.frame.width/2 - self.width/2, y:self.view.frame.height/2 - self.height/2, width:100, height:100))
-self.view.addSubview(square)</code>
 
-cria um objeto square a ser localizado no centro da tela, independente do tamanho
+-> DICA: ADICIONAR OBJETOS DENTRO DE CONTAINERS (UIViews) PARA FACILITAR ALINHAMENTO. (ex: 3 containers, os de baixo e de cima fixados nas margens e no do meio. O do meio alinhado no centro)
+-> REMOVER CONTRAINS: Clica em Resolve Auto Layout Issues; Clear Constrains
+
+#### Programaticamente
+'''
+// cria um objeto square a ser localizado no centro da tela, independente do tamanho
+let square = UIView(frame: CGRect(x:self.view.frame.width/2 - self.width/2, y:self.view.frame.height/2 - self.height/2, width:100, height:100))
+self.view.addSubview(square)
+'''
+
 
 
 ## Cocoapods
