@@ -58,7 +58,11 @@ a distância para as bordas serão determinadas dinamicamente, pela fórmula (no
 - Escolhe alinhamento
 
 -> DICA: ADICIONAR OBJETOS DENTRO DE CONTAINERS (UIViews) PARA FACILITAR ALINHAMENTO. (ex: 3 containers, os de baixo e de cima fixados nas margens e no do meio. O do meio alinhado no centro)
+
 -> REMOVER CONTRAINS: Clica em Resolve Auto Layout Issues; Clear Constrains
+
+-> IPHONE X: 1. Change the canvas to iPhone Xs. 2. Select the background view 3. With the background still selected, go to the size inspector and double click on the constraint that's called "Bottom Space to". 4. Change the first dropdown to Superview and the constant to 0.
+
 
 #### Programaticamente
 Criar um objeto square a ser localizado no centro da tela, independente do tamanho:
