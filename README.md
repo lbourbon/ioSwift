@@ -78,7 +78,7 @@ A interrogação quer dizer: a variável nome pode ser **String** ou **nil**
 let nome: String?
 ```
 Se usar a variável sem ter inicializado, ocorrerá erro
-A exclamação seria o programador dizendo: pode rodar o programa que eu garanto que a variável tem valor<br>
+A exclamação (_force unwrapping_) seria o programador dizendo: pode rodar o programa que eu garanto que a variável tem valor<br>
 ```print(nome!)```  erro de ponteiro nulo
 <br>
 para contornar esse erro pode ser usado:
