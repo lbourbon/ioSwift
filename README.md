@@ -1,6 +1,6 @@
 # ioSwift
 
-## Novo Projeto
+### Novo Projeto
 Organization Identifier: com.[nome da empresa]
 
 
@@ -71,16 +71,16 @@ let square = UIView(frame: CGRect(x:self.view.frame.width/2 - self.width/2, y:se
 self.view.addSubview(square)
 ```
 
-### Segue
-
 ### Optionals
 Em algumas ocasiões podemos querer que as variáveis possam tem valor **nil**. Para isso usamos optionals
 A interrogação quer dizer: a variável nome pode ser **String** ou **nil**
-```let nome: String? ```
+```
+let nome: String?
+```
 Se usar a variável sem ter inicializado, ocorrerá erro
-A exclamação seria o programador dizendo: pode rodar o programa que eu garanto que a variável tem valor
+A exclamação seria o programador dizendo: pode rodar o programa que eu garanto que a variável tem valor<br>
 ```print(nome!)```  erro de ponteiro nulo
-
+<br>
 para contornar esse erro pode ser usado:
 ```
 if nome != nil
@@ -92,7 +92,9 @@ if let nomeCadastrado = nome
 print(nome)
 ```
 
-## Cocoapods
+### Segue
+
+### Cocoapods
 Instalar: (terminal) 
 > sudo gem install cocoapods
 > pod setup --verbose
