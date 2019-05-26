@@ -71,7 +71,26 @@ let square = UIView(frame: CGRect(x:self.view.frame.width/2 - self.width/2, y:se
 self.view.addSubview(square)
 ```
 
+### Segue
 
+### Optionals
+Em algumas ocasiões podemos querer que as variáveis possam tem valor **nil**. Para isso usamos optionals
+A interrogação quer dizer: a variável nome pode ser **String** ou **nil**
+```let nome: String? ```
+Se usar a variável sem ter inicializado, ocorrerá erro
+A exclamação seria o programador dizendo: pode rodar o programa que eu garanto que a variável tem valor
+```print(nome!)```  erro de ponteiro nulo
+
+para contornar esse erro pode ser usado:
+```
+if nome != nil
+print(nome)
+```
+ou melhor: usar um _optional binding_
+```
+if let nomeCadastrado = nome
+print(nome)
+```
 
 ## Cocoapods
 Instalar: (terminal) 
