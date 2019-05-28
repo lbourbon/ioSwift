@@ -101,7 +101,7 @@ Serve para trocar de ViewController e passar informações de um ViewControllers
 3- Clica na bola amarela em cima da tela, clica em Identity Inspector
 4- Preenche a Class com o nome do arquivo criado (isso linka automaticamente o View ao Código)
 
-##### Criar uma Segue a partir de um objeto:
+###### Criar uma Segue a partir de um objeto:
 1- Control no objeto e arrasta para outra tela
 2- No ViewController:
 ````
@@ -125,7 +125,7 @@ Serve para trocar de ViewController e passar informações de um ViewControllers
     }
 ```
 
-##### Criar uma Segue de uma tela para outra (desencadeada por algum objeto):
+###### Criar uma Segue de uma tela para outra (desencadeada por algum objeto):
 1- Control na bola amarela (ViewController) e arrasta para outra tela
 2- Nomear o identifier (ex: goToSecondScreen)
 3- No ViewController:
@@ -161,7 +161,51 @@ Serve para trocar de ViewController e passar informações de um ViewControllers
 
 
 ### Protocols and Delegate
+Usados para trocar informações entre telas. 
+Delegate é um padrão usado quando precisamos que um objeto se responsabilize pelo recebimento das informações de outro objeto ou que realize alguma ação por ele. Fornece a possibilidade de comunicação entre seu objeto e um objeto previamente escrito (ex: CoreLocationManager)
 
+Como fazer um protocolo
+1) Escrever o protocolo (pode ser em arquivo separado) e as funções obrigatórias
+```
+protocol DelegateProtocolName {
+  func delegateMethodName(nome: String) // no exemplo a funcão recebe uma string
+}
+```
+2) Na classe que vai se "responsabilizar" por receber a informação, ou seja, vai ser a delegate
+2.1 conform to protocol
+2.2 implementar o delegaten Method
+```
+class ViewController: UIViewController, DelegateProtocolName { <- conform to protocol
+
+  func delegateMethod(nome: String){
+    myLabel.text = nome
+
+  }
+}
+```
+3) Na outra view:
+```
+var delegate: DelegateProtocolName?
+
+```
+4) Colocar o ViewController como delegate
+```
+override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToSecondScreen"{
+            let destinationVC = segue.destination as! SecondViewController
+            destinationVC.textPassedOver = myText.text!
+            destinationVC.delegate = self
+        }
+    }
+````
+5) Chamar o delegateMethod
+```
+@IBAction func button2Pressed(_ sender: Any) {
+
+    delegate?.dataReceived(data: text2.text!)
+    dismiss(animated: true, completion: nil)
+}
+```
 
 ### Cocoapods
 Instalar: (terminal) 
