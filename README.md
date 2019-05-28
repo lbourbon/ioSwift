@@ -94,6 +94,75 @@ print(nome)
 
 ### Segue
 
+Serve para trocar de ViewController e passar informações de um ViewControllers para outro (criando novos objetos de VC para isso)
+
+1- Adiciona ViewController, ele não vai ter uma classe linkada automaticamente
+2- Criar novo Swift File (ex: SecondViewController)
+3- Clica na bola amarela em cima da tela, clica em Identity Inspector
+4- Preenche a Class com o nome do arquivo criado (isso linka automaticamente o View ao Código)
+
+##### Criar uma Segue a partir de um objeto:
+1- Control no objeto e arrasta para outra tela
+2- No ViewController:
+````
+    @IBOutlet weak var myText: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! SecondViewController
+        destinationVC.textPassedOver = myText.text!
+    }
+````
+3- Na Second View:
+```
+    @IBOutlet weak var textPassed: UILabel!
+    var textPassedOver = ""
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        textPassed.text = textPassedOver
+    }
+```
+
+##### Criar uma Segue de uma tela para outra (desencadeada por algum objeto):
+1- Control na bola amarela (ViewController) e arrasta para outra tela
+2- Nomear o identifier (ex: goToSecondScreen)
+3- No ViewController:
+```
+@IBOutlet weak var myText: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    @IBAction func buttonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToSecondScreen", sender: self)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToSecondScreen"{
+            let destinationVC = segue.destination as! SecondViewController
+            destinationVC.textPassedOver = myText.text!
+        }
+    }
+```
+
+4- Na SecondView:
+```
+    @IBOutlet weak var textPassed: UILabel!
+    var textPassedOver = ""
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        textPassed.text = textPassedOver
+    }
+```
+-> ATENÇÃO: CASO SEJA NECESSÁRIO TROCAR INFORMAÇÕES ENTRE TELAS (IDA E VOLTA) NÃO É RECOMENDADO USAR SEGUES, POIS A CADA TROCA DE TELA, É CRIADO UM NOVO OBJETO VIEW CONTROLLER. NESSE CASO, DEVEMOS USAR DELEGATES E PROTOCOLOS 
+
+
+### Protocols and Delegate
+
+
 ### Cocoapods
 Instalar: (terminal) 
 > sudo gem install cocoapods
