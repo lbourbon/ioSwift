@@ -221,9 +221,40 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 }
 ```
 
-#### Navigation Controller
+### Navigation Controller
 
 Quando seu app contém várias telas, usar um navigation controller cria automaticamente uma barra de navegação na parte superior da tela com botão de voltar e permitindo deslizar de volta para a tela inicial.
 > Clica na primeira tela -> Editor -> Embed In -> Navigation Controller
 
 Se não quiser que determinada tela faça parte do navigation, mas só apareça como um pop-up, mudar o tipo de _Segue_ para *Present Modaly*
+
+### TableViewCell
+
+É um padrão de design formado por várias cells , cada uma compõe uma row. (Presente nos Ajustes do iPhone)
+
+Conform to protocol: UITableViewDelegate e UITableViewDataSource, marcar a view como delegate através de um Outlet
+Exige duas funções: numberOfRowsInSection e cellForRowsAt
+
+Para criar uma cell customizada -> Criar um novo Cocoa Class File, subclass da UITableViewCell e marcar a opção: criar um .xib file.
+
+> 1) cellforRowsAt :
+```
+let cell = tableView.dequeueReusableCell identifier: <"colocar o Identifier da cell customizada"> for: indexPath as! classe da CustomCell
+
+return cell
+```
+> 2) definir a quantidade de rows
+```
+tableView(numberOfRowsInSection) -> Int
+```
+> 3) Tem que registrar a celula customizada
+ ```
+ messageTableView.register(UINib(nibName: "nome", bundle:nil), forCellReuseIdentifier:"identifier da cell")
+ ```
+ >4) Para configurar a altura da *row* :
+ ```
+ messageTableView.rowHeight = UITableView.automaticdimension
+ messageTableView.estimatedRowHeight = 120.0
+ ```
+ ```
+
