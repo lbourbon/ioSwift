@@ -256,5 +256,16 @@ tableView(numberOfRowsInSection) -> Int
  messageTableView.rowHeight = UITableView.automaticdimension
  messageTableView.estimatedRowHeight = 120.0
  ```
+ 
+ ### Animate
+ 
+ Para animar mudança de tamanho ou posição
  ```
+ UIView.animate(withDuration:0.6) {           // tempo em segundos
+    code, exemplo:
+    self.heightConstraint.constant = 300
+    self.view.layoutIfNeeded()                // reseta o layout para mostrar as mudanças
+ }
+```
 
+### TapGesture
