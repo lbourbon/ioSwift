@@ -3,6 +3,20 @@
 ### Novo Projeto
 Organization Identifier: com.[nome da empresa]
 
+#### Cocoapods
+Instalar: (terminal) 
+> sudo gem install cocoapods
+> pod setup --verbose
+
+Add cocoapods no projeto: fecha xcode, na pasta do proj. 
+no terminal:
+> pod init (cria o podfile)
+> open -a Xcode Podfile (abre o podfile no xcode)
+- uncomment next line
+- adiciona pods no bloco do-end: pod 'NomeDoPod'
+> pod install
+- A partir daqui trabalhar com o .xcworkspace
+
 
 ### MVC
 Model View Controller é um padrão de arquitetura de software
@@ -207,16 +221,9 @@ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 }
 ```
 
-### Cocoapods
-Instalar: (terminal) 
-> sudo gem install cocoapods
-> pod setup --verbose
+#### Navigation Controller
 
-Add cocoapods no projeto: fecha xcode, na pasta do proj. 
-no terminal:
-> pod init (cria o podfile)
-> open -a Xcode Podfile (abre o podfile no xcode)
-- uncomment next line
-- adiciona pods no bloco do-end: pod 'NomeDoPod'
-> pod install
-- A partir daqui trabalhar com o .xcworkspace
+Quando seu app contém várias telas, usar um navigation controller cria automaticamente uma barra de navegação na parte superior da tela com botão de voltar e permitindo deslizar de volta para a tela inicial.
+> Clica na primeira tela -> Editor -> Embed In -> Navigation Controller
+
+Se não quiser que determinada tela faça parte do navigation, mas só apareça como um pop-up, mudar o tipo de _Segue_ para *Present Modaly*
