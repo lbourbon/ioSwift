@@ -280,3 +280,36 @@ myTableView.addGestureRecognizer(tapGesture)
 @objc func myFunc(){
 print("tableView tapped")
 }
+```
+
+#### SAVE/RETRIEVE FROM FIREBASE
+
+1 - Save)
+```
+let messageDB = Database.database().reference.child("NomeDoDB")
+let myMessage = escolher o que quer salvar
+messageDB.childByAutoID.setvalue(myMessage) { (error, reference) in
+if error != nil{
+  print(error!)
+} else {
+  fazer o que quiser... habilitar botão, etc...
+  zerar textField
+}
+}
+```
+2-Retrieve)
+```
+let messageDB = Database.database().reference.child("NomeDoDB")
+messageDB.observe(.childAdded) { (snapshot) in
+            let snapshotValue = snapshot.value as! Dictionary<String,String>
+            let text = snapshotValue["MessageText"]!
+            let sender = snapshotValue["Sender"]!
+            
+            let message = Message()
+            message.messageText = text
+            message.sender = sender
+            
+            self.messageArray.append(message)
+            self.messageTableView.reloadData()
+            self.designTableView()
+```
