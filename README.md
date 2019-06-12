@@ -269,3 +269,14 @@ tableView(numberOfRowsInSection) -> Int
 ```
 
 ### TapGesture
+1) adiciona a classe: UITableViewDelegate
+2) na viewDidLoad:
+```
+let tapGesture = UIGestureRecognizer(target: self, action:#selector(myFunc))
+myTableView.addGestureRecognizer(tapGesture)
+````
+3) Definir a função:
+```
+@objc func myFunc(){
+print("tableView tapped")
+}
