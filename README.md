@@ -3,6 +3,53 @@
 ### Novo Projeto
 Organization Identifier: com.[nome da empresa]
 
+
+#### GIT
+
+git init: inicia um repositório local
+
+git add <NomeDoArquivo> ou git add . (para todos os arquivos)
+passa os arquivos para a ‘staging área’ - importante para definir quais arquivos do projeto o git vai ignorar
+
+git rm —cached -r . (desfaz o git add .)
+
+git commit -m “Mensagem”
+passa os arquivos para o repositório local
+
+git status: mostra os arquivos ignorados ou os novos incluídos
+
+git log: mostra os registros dos commits
+
+git checkout <NomeDoArquivo> retorna o arquivo para a situação do último comia
+
+Repositório Remoto
+1) criar repo no GitHub.com
+2) git remote add origin <https do repositório>
+3) git push -u origin master
+
+origin: nome do remoto
+master: nome do branch
+
+.gitignore
+arquivo com a lista de arquivos a ser ignorados no commit (ex: api keys, secrets, arquivos desnecessários…)
+
+touch .gitignore : o comando touch cria o arquivo com esse nome
+open .gitignore: abre
+no GitHub existe um repositório chamado github/gitignore com padrões de arquivos a serem ignorados
+
+git clone <https do repo>
+clona o repositório para o computador
+
+git branch <nome do branch>
+cria um novo branch, usado frequentemente para desenvolver novas funcionalidades em paralelo sem quebrar o master branch
+
+git branch: mostra o nome dos branches disponíveis
+
+git checkout <nome do branch>, troca o branch para o escolhido
+
+git merge <nome do branch>: junta o branch escolhido ao master
+
+
 #### Cocoapods
 Instalar: (terminal) 
 > sudo gem install cocoapods
