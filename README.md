@@ -304,6 +304,14 @@ tableView(numberOfRowsInSection) -> Int
  messageTableView.estimatedRowHeight = 120.0
  ```
  
+ #### TableViewCellController
+    Quando a classe é subclasse da UITableViewController, já "ganhamos de graça:"
+    - register
+    - outlet
+    - delegate
+    Mas ainda é obrigatório as duas funções
+     
+ 
  ### Animate
  
  Para animar mudança de tamanho ou posição
