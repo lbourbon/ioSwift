@@ -368,3 +368,38 @@ messageDB.observe(.childAdded) { (snapshot) in
             self.messageTableView.reloadData()
             self.designTableView()
 ```
+
+### User Defaults
+
+Serve para armazenar dados em pouca quantidade. Toda vez que o app é aberto, todos os dados presentes no user defaults são carregados, por esse motivo não é recomendável salvar muitos dados. Bastante usado para salvar preferências do usuário.
+UserDefaults can save integers, booleans, strings, arrays, dictionaries, dates and more, but you should be careful not to save too much data because it will slow the launch of your app.
+```
+let defaults = UserDefaults.standard
+defaults.set(25, forKey: "Age")
+defaults.set(true, forKey: "UseTouchID")
+defaults.set(CGFloat.pi, forKey: "Pi")
+defaults.set("Paul Hudson", forKey: "Name")
+defaults.set(Date(), forKey: "LastRun")
+```
+Para restaurar:
+```
+let age = defaults.integer(forKey: "Age")
+let useTouchID = defaults.bool(forKey: "UseTouchID")
+let pi = defaults.double(forKey: "Pi")
+let savedArray = defaults.object(forKey: "SavedArray") as? [String] ?? [String]()
+```
+
+### Alert
+```
+let alert = UIAlertController(title: "titulo", message: "mensagem", preferredStyle:.alert)
+let action = UIAlertAction(title:"confirm", style:.default) { (action) in
+    code : salvar? o que fazer após o clique em confir?
+    print(textField.text!)
+}
+alert.addAction(action)
+let textField = UITextField()
+alert.addTextFiel(alertTextField){
+alertTextField.placeholder = "New Item"
+textField = alertTextField
+}
+```
