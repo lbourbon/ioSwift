@@ -372,7 +372,7 @@ messageDB.observe(.childAdded) { (snapshot) in
 ### User Defaults
 
 Serve para armazenar dados em pouca quantidade. Toda vez que o app é aberto, todos os dados presentes no user defaults são carregados, por esse motivo não é recomendável salvar muitos dados. Bastante usado para salvar preferências do usuário.
-UserDefaults can save integers, booleans, strings, arrays, dictionaries, dates and more, but you should be careful not to save too much data because it will slow the launch of your app.
+UserDefaults can save integers, booleans, strings, arrays, dictionaries, dates and more, but you should be careful not to save too much data because it will slow the launch of your app. SÓ SALVA TIPOS PRIMITIVOS
 ```
 let defaults = UserDefaults.standard
 defaults.set(25, forKey: "Age")
@@ -388,6 +388,22 @@ let useTouchID = defaults.bool(forKey: "UseTouchID")
 let pi = defaults.double(forKey: "Pi")
 let savedArray = defaults.object(forKey: "SavedArray") as? [String] ?? [String]()
 ```
+
+### NSEncoder
+Forma mais 'robusta' do que o userDefaults para salvar dados. Assim como o userDefaults, os dados ficam armazenados no SandBox e são sincronizados automaticamente com o iCloud. Além dos tipos primitivos, tb pode salvar classes criadas, porém essas classes só podem conter tipos primitivos
+```
+let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userdomainMask).first?.appendingPathComponent("Items.plist")
+
+let encoder = PropertyListEncoder()
+
+do{
+  let data = try encoder.encode(itemArray)
+  try data.write(to: dataFilePath)
+} catch{
+  print("Error encoding \(error)")
+}
+```
+
 
 ### Alert
 ```
