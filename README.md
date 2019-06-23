@@ -403,7 +403,20 @@ do{
   print("Error encoding \(error)")
 }
 ```
-
+DECODER
+```  
+func loadItems(){
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do {
+                itemArray = try decoder.decode([Item].self, from: data)
+            } catch {
+                print("Error decoding: \(error)")
+            }
+        }
+        
+    }
+````
 
 ### Alert
 ```
