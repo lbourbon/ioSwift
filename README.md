@@ -480,7 +480,8 @@ do {
 ```
 itemArray[index].setValue("Completed", forKey:"title")
 ```
-#### Delete
+##### Delete
+A ordem abaixo é importante para evitar *index out of range error*
 ```
 context.delete(itemArray[indexPath.row])
 itemArray.remove(at: indexPath.row)
