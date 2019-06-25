@@ -450,7 +450,7 @@ let context = (UIApplication.shared.delegate as! App Delegate).persistentContain
 ```print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))```
 6) No banco de dados, criar uma Entity(classe) e seus atributos (properties) 
 
-##### Crud
+##### Create
 
 1) criar um objeto do seu banco de dados, obrigatório criar seus atributos caso eles não sejam opcionais ex:
 ```
@@ -466,3 +466,23 @@ try context.save()
 print("Error saving context \(error)")
 }
 ```
+##### Read
+```
+let request: NSFetchRequest<Item> = Item.fetchRequest()
+do {
+    let itemArray = try context.fetch(request) 
+} catch {
+    print("Error saving context \(error)")
+}
+```
+##### Update
+-> Mudar title atual para "Completed"
+```
+itemArray[index].setValue("Completed", forKey:"title")
+```
+#### Delete
+```
+context.delete(itemArray[indexPath.row])
+itemArray.remove(at: indexPath.row)
+```
+-> APÓS CREATE, UPDATE OU DELETE, TEM QUE SALVAR O CONTEXT : `try context.save()`
