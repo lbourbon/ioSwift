@@ -437,3 +437,32 @@ func loadItems(){
 ````
 
 #### CORE MODEL
+Quando for criar o projeto, marcar *usar core data*
+Caso o projeto já tenha sido iniciado, para adicionar o Core Model
+1) Criar um novo arquivo tipo Data Model (na verdade é um banco de dados SQLite)
+2) Criar um novo projeto de teste só para pegar as funções do AppDelegate
+3) Mudar o nome do appDelegate para o nome do seu model
+4) Criar uma variável para acessar o contexto a partir do seu Controller
+```
+let context = (UIApplication.shared.delegate as! App Delegate).persistentContainer.viewContext
+```
+5) Seu banco de dados fica salvo em:
+```print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))```
+6) No banco de dados, criar uma Entity(classe) e seus atributos (properties) 
+
+##### Crud
+
+1) criar um objeto do seu banco de dados, obrigatório criar seus atributos caso eles não sejam opcionais ex:
+```
+let newItem = Item(context: context)
+newItem.title = "exemplo de Item"
+newItem.done = false
+```
+2)Salvar o contexto
+```
+do {
+try context.save()
+} catch {
+print("Error saving context \(error)")
+}
+```
