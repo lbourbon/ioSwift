@@ -487,3 +487,24 @@ context.delete(itemArray[indexPath.row])
 itemArray.remove(at: indexPath.row)
 ```
 -> APÓS CREATE, UPDATE OU DELETE, TEM QUE SALVAR O CONTEXT : `try context.save()`
+
+### Queries / SearchBar
+Após arrastar a searchBar no main.storyboard, lembrar de colocá-la como delagate -> control + arrasta para o ícone amarelo -> clica em delegate
+
+```
+extension TodoListViewController: UISearchBarDelegate{
+    func loadItems(with request:NSFetchRequest<Item> = Item.fetchRequest()){
+         do {
+            itemArray = try context.fetch(request)
+        } catch {
+            print("Error fetching: \(error)")
+        }
+    }
+    
+    func earchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let request: NSFetchRequest<Item> = Item.fetchRequest()
+        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
+        request.descriptor = NSSortDescriptor(key:"title", ascending: true)
+       loadItems(with: request)
+  }
+}
