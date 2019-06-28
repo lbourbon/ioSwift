@@ -492,19 +492,29 @@ itemArray.remove(at: indexPath.row)
 Após arrastar a searchBar no main.storyboard, lembrar de colocá-la como delagate -> control + arrasta para o ícone amarelo -> clica em delegate
 
 ```
-extension TodoListViewController: UISearchBarDelegate{
-    func loadItems(with request:NSFetchRequest<Item> = Item.fetchRequest()){
-         do {
-            itemArray = try context.fetch(request)
-        } catch {
-            print("Error fetching: \(error)")
+extension TodoListViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchItem(containing: searchBar.text!)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText == ""{
+            loadItems()
+            DispatchQueue.main.async {--->>> coloca a atividade como main thread
+                searchBar.resignFirstResponder()    -->> dismiss keyboard
+            }
+        } else {
+            searchItem(containing: searchText)
         }
     }
     
-    func earchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    func searchItem(containing text: String){
         let request: NSFetchRequest<Item> = Item.fetchRequest()
-        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
-        request.descriptor = NSSortDescriptor(key:"title", ascending: true)
-       loadItems(with: request)
-  }
+        request.predicate = NSPredicate(format: "title CONTAINS[cd] %@", text)
+        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
+        
+        loadItems(with: request)
+    }
 }
+```
