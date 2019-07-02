@@ -518,3 +518,23 @@ extension TodoListViewController: UISearchBarDelegate {
     }
 }
 ```
+para fazer múltiplas queries usar NSCompundPredicate
+```
+func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest(), predicate: NSPredicate? = nil){
+        
+        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
+        
+        if let addedPredicate = predicate {
+            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, addedPredicate]
+        } else {
+            request.predicate = categoryPredicate
+        }
+        
+        do {
+            itemArray = try context.fetch(request)
+        } catch {
+            print("Error Fetching Items: \(error)")
+        }
+        tableView.reloadData()
+    }
+```
