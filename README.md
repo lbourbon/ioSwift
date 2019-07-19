@@ -538,3 +538,79 @@ func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest(), predica
         tableView.reloadData()
     }
 ```
+
+### In App Purchase
+site: App Developer
+Certificate & App ID
+Explicit ID: preencher bundle ID
+-> continue -> register
+site: App Store Connect
+My Apps
++ new app
+SKU (vc escolhe um pra cada app)
+In-App Purchase -> escolher tipo ->
+reference name (qq nome, pra vc saber do que se trata)
+product id: bundle ID + . + reference name (sem espaço)
+escolher preço
+display name: o nome que vai aparecer no app
+description: descrição da compra
+review information: screen shot 
+
+XCode: Capabilities -> In-app Purchase ON
+```
+let productID = "bundle + reference name"
+
+func buyPremium() {
+  if SKPaymenteQueue.canMakePayments(){
+    let paymentRequest = SKMutablePayments()
+    paymentRequest.productIdentifier = productID
+    SKPaymentQueue.default().add(paymentRequest)
+  } else {
+    print("User can't make payments")
+  }
+}
+
+class MyViewController: SKPaymentTransactionObserver // conform to protocol
+viewDidLoad
+SKPaymentQueue.default().add(self)
+
+func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransactions]) {
+  for transaction in transactions{
+    if transaction.transactionState == .purchased{
+      allowPremium()
+      SKPaymentQueue.default().finishTransaction(transaction)
+    } else if transaction.transactionState == .failed{
+      if let error = transaction.error {
+         print("Transaction failed due to error: \(error.localizaedDescription)")
+         SKPaymentQueue.default().finishTransaction(transaction)
+    } else if transaction.transactionState == .restored {
+      allowPremium()
+      SKPaymentQueue.default().finishTransaction(transaction)
+    }
+      
+    } 
+  }
+}
+```
+Criar um Sand Box User no AppStore Connect
+dica: email: lbourbon+QualquerNome@gmail.com
+SideLoad: login Ajustes: Itunes: sign in sand box account
+```
+func allowPremium(){
+  UserDefaults.standard.set(true, forKey: productID)
+  // colocar o que quiser pros premiums
+}
+
+func userIsPremium -> Bool {
+  return UserDefaults.standard.bool(forKey: productID)
+}
+
+viewDidLoad
+if userIsPremium(){
+  allowPremium()
+}
+
+// RESTORE IN APP PURCHASE
+
+IBAction:
+SKPaymentQueue.default().restoreCompletedTransactions()
