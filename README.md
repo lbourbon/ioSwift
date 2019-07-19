@@ -614,3 +614,4 @@ if userIsPremium(){
 
 IBAction:
 SKPaymentQueue.default().restoreCompletedTransactions()
+```
